@@ -1,9 +1,9 @@
-<app-header></app-header>
-<div class="conta">
+<app-header (recipeComponent)="recipeComponent($event)" (shopingComponent)="shopingComponent($event)"></app-header>
+<div class=" conta">
   <div class="row">
     <div class="col-md-12">
-      <app-recipes></app-recipes>
-      <app-shoping-list></app-shoping-list>
+      <app-recipes *ngIf="recipeFlag"></app-recipes>
+      <app-shoping-list *ngIf="shopingFlag"></app-shoping-list>
     </div>
   </div>
 </div>
