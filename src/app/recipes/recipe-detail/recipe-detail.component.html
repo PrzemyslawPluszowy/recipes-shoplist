@@ -1,11 +1,12 @@
 <div class="row">
     <div class="col-xs-12">
-        <img src="" alt="" class="img-rensponsive">
+        <img [src]="singleRecipe.imagePatch" [alt]="singleRecipe.name" class="img-rensponsive"
+            style="max-height: 350px;">
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <h1>Recipe Name</h1>
+        <h1>{{singleRecipe.name}}</h1>
     </div>
 </div>
 <div class="row">
@@ -22,7 +23,7 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
-        Descryption
+        {{singleRecipe.descryption}}
     </div>
 </div>
 <div class="row">

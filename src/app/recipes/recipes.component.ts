@@ -19,7 +19,10 @@ export class RecipesComponent implements OnInit {
       'https://cdn.stocksnap.io/img-thumbs/960w/strawberry-food_PROXEBKRSP.jpg'
     ),
   ];
-
+  singleRecipe: Recipe = { name: '', descryption: '', imagePatch: '' };
+  // singleRecipe(event: Recipe) {
+  //   this.singleRecipeValue = event;
+  // }
   constructor() {}
 
   ngOnInit(): void {}
