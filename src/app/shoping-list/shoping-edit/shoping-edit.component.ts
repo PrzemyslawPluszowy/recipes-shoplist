@@ -6,6 +6,7 @@ import {
   Input,
   Output,
   EventEmitter,
+  ElementRef,
 } from '@angular/core';
 import { Ingridient } from 'src/app/shared/ingridient.model';
 import { singleIndygriend } from './model.component';
@@ -16,8 +17,9 @@ import { singleIndygriend } from './model.component';
   styleUrls: ['./shoping-edit.component.css'],
 })
 export class ShopingEditComponent implements OnInit {
-  @ViewChild('nameInput', { static: false }) nameInputRef: any;
-  @ViewChild('amount', { static: false }) nameAmountRef: any;
+  @ViewChild('nameInput', { static: false }) nameInputRef!: ElementRef;
+
+  @ViewChild('amount', { static: false }) nameAmountRef!: ElementRef;
   @Output()
   SingleIngredient = new EventEmitter<Ingridient>();
 
