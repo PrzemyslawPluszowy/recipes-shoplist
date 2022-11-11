@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { Ingridient } from 'src/app/shared/ingridient.model';
 import { singleIndygriend } from './model.component';
+import { ShopingService } from './../shoping.service';
 
 @Component({
   selector: 'app-shoping-edit',
@@ -20,29 +21,15 @@ export class ShopingEditComponent implements OnInit {
   @ViewChild('nameInput', { static: false }) nameInputRef!: ElementRef;
 
   @ViewChild('amount', { static: false }) nameAmountRef!: ElementRef;
-  @Output()
-  SingleIngredient = new EventEmitter<Ingridient>();
 
-  sendIngredients(singleIndygriend: Ingridient) {
-    this.SingleIngredient.emit(singleIndygriend);
-  }
-
-  // singleIndygriend: { name: string; amount: number } = { name: '', amount: 0 };
-
-  // add(nameInput: HTMLInputElement, amount: HTMLInputElement) {
-  //   let amountNumber = parseFloat(amount.value);
-  //   this.singleIndygriend = { name: nameInput.value, amount: amountNumber };
-
-  //   this.sendIngredients(this.singleIndygriend);
-  // }
   add2() {
     const name: string = this.nameInputRef.nativeElement.value;
     const number: number = this.nameAmountRef.nativeElement.value;
-    const newIndiegrents = new Ingridient(name, number);
-    this.sendIngredients(newIndiegrents);
+    const newIndigriend = new Ingridient(name, number);
+    this.shopingService.add(newIndigriend);
   }
 
-  constructor() {}
+  constructor(private shopingService: ShopingService) {}
 
   ngOnInit() {}
 }
