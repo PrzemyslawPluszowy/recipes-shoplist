@@ -3,6 +3,7 @@ import { Recipe } from '../recipe.model';
 import { RecipesComponent } from './../recipes.component';
 import { RecipeItemComponent } from './../recipe-item/recipe-item.component';
 import { single } from 'rxjs';
+import { RecepieService } from '../recepie.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -10,19 +11,13 @@ import { single } from 'rxjs';
   styleUrls: ['./recipe-list.component.css'],
 })
 export class RecipeListComponent implements OnInit {
-  @Input() recipes: Recipe[];
-  @Output()
-  sendSingleRecipe = new EventEmitter<Recipe>();
+  recipes: Recipe[] = [];
 
   singleRecipe: Recipe = { name: '', descryption: '', imagePatch: '' };
 
-  onRecipeSelected(item: Recipe) {
-    this.singleRecipe = item;
-    this.sendSingleRecipe.emit(item);
-  }
-  constructor() {
-    this.recipes = [];
-  }
+  constructor(private recipesService: RecepieService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.recipes = this.recipesService.getRecipes();
+  }
 }
